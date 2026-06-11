@@ -16,7 +16,7 @@ boxplot(df$wt)
 hist(df$wt)
 # os dados parecem distribuidos normalmente, com a presenca de outliers
 
-## demais demais variaveis ----
+## demais variaveis ----
 
 ### pluralty, so valores de feto unico
 ### outcome, so valores de nascido vivo q sobreviveu a 28 dias
@@ -35,7 +35,7 @@ hist(df$gestation)
 
 ### parity ----
 # numero total de gestações anteriores
-summary(df$parity) 
+summary(df$parity)
 hist(df$parity)
 boxplot(df$parity)
 # sem NA, forte assimetria a direita (lembra log), presenca de outliers
@@ -45,7 +45,7 @@ boxplot(df$parity)
 summary(df$race)
 table(df$race)
 prop.table(table(df$race)) * 100
-# sem NA, 71% são brancas, seguido de quase 20% pretas
+# 13 NAs, 71% são brancas, seguido de quase 20% pretas
 
 ### age ----
 # idade da mae ao final da gravidez, em anos
@@ -117,11 +117,14 @@ boxplot(df$dwt)
 summary(df$marital)
 table(df$marital)
 prop.table(table(df$marital)) * 100
-# 2 NA's 98% casados, 1% legalmente separados
+# 2 NA's, 98% casados, 1% legalmente separados
 
 ### inc ----
 # renda familiar anual, em incrementos de US$ 2.500
 summary(df$inc)
+table(df$inc)
+prop.table(table(df$inc)) * 100
+# 124 NAs, 46% Media, 36% Baixa
 
 ### smoke ----
 # mae fuma?

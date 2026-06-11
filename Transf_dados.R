@@ -13,6 +13,7 @@ summary(dados)
 summary(dados$wt)
 plot(dados$wt)
 boxplot(dados$wt)
+# sum(is.na(df$wt)) - sem NA
 
 ## demais variaveis ----
 
@@ -30,6 +31,7 @@ summary(dados$outcome) # so valores 1 = nascido vivo q sobreviveu a 28 dias
 summary(dados$gestation) # 999 deve ser desconhecido
 plot(dados$gestation)
 boxplot(dados$gestation)
+# 13 NAs
 
 ### sex
 # 1 = M, 2 = F, 9 = desconhecido
@@ -125,7 +127,7 @@ summary(dados$sex)
 
 #### race
 dados$race <- dados$race %>% 
-  replace(dados$race == 99, NA) %>% 
+  replace(dados$race %in% c(10,99), NA) %>% 
   factor(
     levels = c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
     labels = c("White", "White", "White", "White", "White", 
@@ -166,7 +168,7 @@ boxplot(dados$wt.1)
 
 #### drace
 dados$drace <- dados$drace %>% 
-  replace(dados$drace == 99, NA) %>% 
+  replace(dados$drace %in% c(10,99), NA) %>% 
   factor(
     levels = c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
     labels = c("White", "White", "White", "White", "White", 
@@ -219,9 +221,9 @@ dados$inc <- dados$inc %>%
   replace(dados$inc %in% c(98, 99), NA) %>% 
   factor(
     levels = c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
-    labels = c("Under 2500", "2500-4999", "5000-7499", "7500-9999", 
-               "10000-12499", "12500-14999", "15000-17499", "17500-19999",
-               "20000-24999", "25000+"))
+    labels = c("Baixa", "Baixa", "Baixa", "Media", 
+               "Media", "Media", "Media", "Alta",
+               "Alta", "Alta"))
 table(dados$inc)
 prop.table(table(dados$inc)) * 100
 
